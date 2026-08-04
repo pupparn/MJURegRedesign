@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ตารางเรียนนักศึกษา - มหาวิทยาลัยแม่โจ้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./maejo.css">
+<style>
+  /* ---------- search form ---------- */
+  .search-card{padding:28px 32px;display:flex;flex-direction:column;gap:20px;}
+  .form-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:16px;}
+  .field-group{display:flex;flex-direction:column;gap:6px;}
+  .field-label{font-size:12.5px;font-weight:600;color:#7a8577;letter-spacing:0.2px;}
+  .field-input{
+    font-size:14px;color:#2c332b;background:#fff;border:1px solid #d8ddd3;
+    border-radius:8px;padding:8px 12px;width:100%;
+  }
+
+  .action-row{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    padding-top:4px;border-top:1px solid #edf0ea;
+  }
+  .search-btn{
+    background:var(--accent-darker);color:#f2ede0;font-weight:700;font-size:14px;border:none;
+    padding:10px 30px;border-radius:8px;cursor:pointer;
+  }
+
+  /* tips toggle — checkbox hack, no JS */
+  #tips-toggle{position:absolute;opacity:0;pointer-events:none;}
+  .tips-btn{
+    display:flex;align-items:center;gap:6px;background:transparent;border:none;cursor:pointer;
+    color:var(--accent-dark);font-size:13.5px;font-weight:600;padding:8px 4px;
+  }
+  .chevron{display:inline-block;transition:transform 0.15s ease;font-size:12px;}
+  #tips-toggle:checked ~ .page .search-card .chevron{transform:rotate(180deg);}
+  .example-box{
+    display:none;background:#f8f9f6;border-radius:var(--radius-md);padding:16px 22px;
+  }
+  #tips-toggle:checked ~ .page .search-card .example-box{display:block;}
+  .example-list{margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:#4c564b;line-height:1.6;}
+  .example-hint{color:var(--accent-dark);font-weight:700;}
+
+  @media (max-width:880px){
+    .search-card{padding:20px;}
+  }
+  @media (max-width:460px){
+    .form-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle">
+<input type="checkbox" id="lang-toggle">
+<input type="checkbox" id="tips-toggle">
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <label for="menu-toggle" class="hamburger" aria-label="เปิดเมนู">
+        <span></span><span></span><span></span>
+      </label>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1280px-MJU_LOGO.svg.png" alt="Maejo University logo">
+      <div class="brand">
+        <span class="brand-name">มหาวิทยาลัยแม่โจ้</span>
+        <span class="brand-sub">MAEJO UNIVERSITY</span>
+      </div>
+      <div class="topbar-divider"></div>
+      <span class="topbar-service">ระบบบริการการศึกษา</span>
+    </div>
+
+    <div class="topbar-right">
+      <span class="welcome">ยินดีต้อนรับ</span>
+      <label for="lang-toggle" class="lang-toggle">
+        <span class="lang-knob"></span>
+        <span class="lang-th">TH</span>
+        <span class="lang-en">EN</span>
+      </label>
+    </div>
+  </header>
+
+  <label for="menu-toggle" class="backdrop"></label>
+
+  <div class="main-row">
+
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-header">
+          <span>เมนูหลัก</span>
+          <label for="menu-toggle" class="close-menu">✕</label>
+        </div>
+        <nav class="menu">
+          <a href="./index.html" class="menu-item">หน้าหลัก</a>
+          <a href="./courses.html" class="menu-item">วิชาที่เปิดสอน</a>
+          <a href="./class-schedule.html" class="menu-item active">ตารางเรียนนักศึกษา</a>
+          <a href="#" class="menu-item">ตารางสอนอาจารย์</a>
+          <a href="#" class="menu-item">ตารางการใช้ห้อง</a>
+          <a href="#" class="menu-item">ปฏิทินการศึกษา</a>
+          <a href="#" class="menu-item">หลักสูตรที่เปิดสอน</a>
+          <a href="#" class="menu-item">ตอบคำถาม</a>
+          <a href="#" class="menu-item">แนะนำการลงทะเบียน</a>
+          <a href="#" class="menu-item">วิธีการพิมพ์ใบเสร็จรับเงินค่าเทอม (กองคลัง)</a>
+          <a href="#" class="menu-item">เว็บไซต์สำนักบริหารฯ</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <div class="page-header">
+        <span class="page-title">ตารางเรียนนักศึกษา</span>
+        <span class="page-sub">Student Class Schedule — ค้นหาตารางเรียนของนักศึกษารายบุคคล</span>
+      </div>
+
+      <form class="card search-card">
+        <div class="form-grid">
+          <label class="field-group">
+            <span class="field-label">เลขประจำตัวนักศึกษา</span>
+            <input type="text" placeholder="เช่น 41* — ขึ้นต้นด้วย 41" class="field-input">
+          </label>
+          <label class="field-group">
+            <span class="field-label">ชื่อ</span>
+            <input type="text" placeholder="เช่น สม* — ขึ้นต้นด้วย สม" class="field-input">
+          </label>
+          <label class="field-group">
+            <span class="field-label">นามสกุล</span>
+            <input type="text" placeholder="เช่น *ชาย — ลงท้ายด้วย ชาย" class="field-input">
+          </label>
+          <label class="field-group">
+            <span class="field-label">สถานภาพ</span>
+            <select class="field-input">
+              <option>ทั้งหมด</option>
+              <option>กำลังศึกษา</option>
+              <option>พ้นสภาพ</option>
+              <option>สำเร็จการศึกษา</option>
+            </select>
+          </label>
+          <label class="field-group">
+            <span class="field-label">แสดงผลไม่เกิน</span>
+            <select class="field-input">
+              <option>25</option>
+              <option>50</option>
+              <option>100</option>
+              <option>200</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="action-row">
+          <label for="tips-toggle" class="tips-btn">
+            <span>วิธีค้นหาแบบละเอียด</span>
+            <span class="chevron">⌄</span>
+          </label>
+          <button type="submit" class="search-btn">ค้นหา</button>
+        </div>
+
+        <div class="example-box">
+          <ul class="example-list">
+            <li>ขึ้นต้นด้วยข้อความที่ระบุ ให้ตามด้วย <span class="example-hint">*</span> เช่น <span class="example-hint">41*</span> หรือ <span class="example-hint">สม*</span></li>
+            <li>ลงท้ายด้วยข้อความที่ระบุ ให้นำหน้าด้วย <span class="example-hint">*</span> เช่น <span class="example-hint">*ชาย</span></li>
+            <li>เว้นว่างช่องใดไว้ได้หากไม่ต้องการระบุเงื่อนไขนั้น</li>
+          </ul>
+        </div>
+      </form>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

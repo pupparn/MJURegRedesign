@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>วิชาที่เปิดสอน - มหาวิทยาลัยแม่โจ้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./maejo.css">
+<style>
+  /* ---------- search form ---------- */
+  .search-card{padding:28px 32px;display:flex;flex-direction:column;}
+  .form-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px;}
+  .field-group{display:flex;flex-direction:column;gap:6px;}
+  .field-label{font-size:12.5px;font-weight:600;color:#7a8577;letter-spacing:0.2px;}
+  .field-row{display:flex;align-items:center;gap:8px;}
+  .field-input{
+    font-size:14px;color:#2c332b;background:#fff;border:1px solid #d8ddd3;
+    border-radius:8px;padding:8px 12px;width:100%;
+  }
+
+  .action-row{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    padding-top:4px;margin-top:20px;border-top:1px solid #edf0ea;
+  }
+  .inline-toggle{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#3f4a3e;cursor:pointer;}
+  .inline-toggle input{accent-color:var(--accent);width:16px;height:16px;}
+  .search-btn{
+    background:var(--accent-darker);color:#f2ede0;font-weight:700;font-size:14px;border:none;
+    padding:10px 30px;border-radius:8px;cursor:pointer;
+  }
+
+  /* ---------- results table ---------- */
+  .results-header{
+    display:flex;align-items:center;justify-content:space-between;padding:18px 26px;border-bottom:1px solid #edf0ea;
+  }
+  .results-title{font-size:16px;font-weight:var(--font-bold);letter-spacing:0.2px;color:var(--accent-darker);}
+  .results-count{font-size:12px;color:#8a948a;font-family:Inter,sans-serif;}
+  .table-scroll{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;min-width:640px;}
+  th{
+    text-align:left;font-size:12px;font-weight:700;color:#7a8577;text-transform:uppercase;
+    letter-spacing:0.5px;padding:10px 20px;border-bottom:1px solid #edf0ea;white-space:nowrap;
+  }
+  td{font-size:13.5px;color:#3f4a3e;padding:12px 20px;white-space:nowrap;border-bottom:1px solid #f1f3ee;}
+  td.code{font-weight:700;color:var(--accent-darker);font-family:Inter,sans-serif;}
+
+  @media (max-width:880px){
+    .search-card{padding:20px;}
+  }
+  @media (max-width:460px){
+    .form-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle">
+<input type="checkbox" id="lang-toggle">
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <label for="menu-toggle" class="hamburger" aria-label="เปิดเมนู">
+        <span></span><span></span><span></span>
+      </label>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1280px-MJU_LOGO.svg.png" alt="Maejo University logo">
+      <div class="brand">
+        <span class="brand-name">มหาวิทยาลัยแม่โจ้</span>
+        <span class="brand-sub">MAEJO UNIVERSITY</span>
+      </div>
+      <div class="topbar-divider"></div>
+      <span class="topbar-service">ระบบบริการการศึกษา</span>
+    </div>
+
+    <div class="topbar-right">
+      <span class="welcome">ยินดีต้อนรับ</span>
+      <label for="lang-toggle" class="lang-toggle">
+        <span class="lang-knob"></span>
+        <span class="lang-th">TH</span>
+        <span class="lang-en">EN</span>
+      </label>
+    </div>
+  </header>
+
+  <label for="menu-toggle" class="backdrop"></label>
+
+  <div class="main-row">
+
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-header">
+          <span>เมนูหลัก</span>
+          <label for="menu-toggle" class="close-menu">✕</label>
+        </div>
+        <nav class="menu">
+          <a href="./index.html" class="menu-item">หน้าหลัก</a>
+          <a href="./courses.html" class="menu-item active">วิชาที่เปิดสอน</a>
+          <a href="./class-schedule.html" class="menu-item">ตารางเรียนนักศึกษา</a>
+          <a href="#" class="menu-item">ตารางสอนอาจารย์</a>
+          <a href="#" class="menu-item">ตารางการใช้ห้อง</a>
+          <a href="#" class="menu-item">ปฏิทินการศึกษา</a>
+          <a href="#" class="menu-item">หลักสูตรที่เปิดสอน</a>
+          <a href="#" class="menu-item">ตอบคำถาม</a>
+          <a href="#" class="menu-item">แนะนำการลงทะเบียน</a>
+          <a href="#" class="menu-item">วิธีการพิมพ์ใบเสร็จรับเงินค่าเทอม (กองคลัง)</a>
+          <a href="#" class="menu-item">เว็บไซต์สำนักบริหารฯ</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <div class="page-header">
+        <span class="page-title">วิชาที่เปิดสอน</span>
+        <span class="page-sub">ค้นหารายวิชาที่เปิดสอนในแต่ละภาคการศึกษา</span>
+      </div>
+
+      <form class="card search-card">
+        <div class="form-grid">
+          <label class="field-group">
+            <span class="field-label">หมวดวิชา</span>
+            <select class="field-input">
+              <option>ทุกรหัสวิชา</option>
+              <option>หมวดวิชาศึกษาทั่วไป</option>
+              <option>หมวดวิชาเฉพาะ</option>
+              <option>หมวดวิชาเลือกเสรี</option>
+            </select>
+          </label>
+          <label class="field-group">
+            <span class="field-label">หน่วยงานเจ้าของรายวิชา</span>
+            <select class="field-input">
+              <option>วิศวกรรมและอุตสาหกรรมเกษตร</option>
+              <option>ทั้งหมด</option>
+              <option>วิทยาศาสตร์</option>
+              <option>บริหารธุรกิจ</option>
+              <option>ศิลปศาสตร์</option>
+            </select>
+          </label>
+          <label class="field-group">
+            <span class="field-label">รหัสวิชา</span>
+            <input type="text" placeholder="ป้อนรหัสวิชา" class="field-input">
+          </label>
+          <label class="field-group">
+            <span class="field-label">ชื่อวิชา</span>
+            <input type="text" placeholder="ป้อนชื่อวิชา" class="field-input">
+          </label>
+          <label class="field-group">
+            <span class="field-label">ปีการศึกษา — ภาค</span>
+            <div class="field-row">
+              <select class="field-input"><option>2569</option><option>2568</option><option>2567</option></select>
+              <select class="field-input"><option>1</option><option>2</option><option>3</option></select>
+            </div>
+          </label>
+          <label class="field-group">
+            <span class="field-label">วิทยาเขต</span>
+            <select class="field-input"><option>ทั้งหมด</option><option>เชียงใหม่</option><option>แพร่</option><option>ชุมพร</option></select>
+          </label>
+          <label class="field-group">
+            <span class="field-label">ระดับการศึกษา</span>
+            <select class="field-input"><option>ทั้งหมด</option><option>ปริญญาตรี</option><option>ปริญญาโท</option><option>ปริญญาเอก</option></select>
+          </label>
+          <label class="field-group">
+            <span class="field-label">แสดงผลไม่เกิน</span>
+            <select class="field-input">
+              <option>50</option>
+              <option>100</option>
+              <option>200</option>
+              <option>500</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="action-row">
+          <label class="inline-toggle">
+            <input type="checkbox"> ค้นหาโดยระบุวันเวลา
+          </label>
+          <button type="submit" class="search-btn">ค้นหา</button>
+        </div>
+      </form>
+
+      <div class="card">
+        <div class="results-header">
+          <span class="results-title">ผลการค้นหา</span>
+          <span class="results-count">พบ 5 รายการ</span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>รหัสวิชา</th>
+                <th>ชื่อวิชา</th>
+                <th>หน่วยกิต</th>
+                <th>หน่วยงานเจ้าของรายวิชา</th>
+                <th>ระดับ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="code">10102101</td>
+                <td>ภาษาไทยเพื่อการสื่อสาร</td>
+                <td>3(3-0-6)</td>
+                <td>ศิลปศาสตร์</td>
+                <td>ปริญญาตรี</td>
+              </tr>
+              <tr>
+                <td class="code">10203101</td>
+                <td>ทักษะการใช้ภาษาอังกฤษ</td>
+                <td>3(3-0-6)</td>
+                <td>ศิลปศาสตร์</td>
+                <td>ปริญญาตรี</td>
+              </tr>
+              <tr>
+                <td class="code">40101101</td>
+                <td>คณิตศาสตร์วิศวกรรม 1</td>
+                <td>3(3-0-6)</td>
+                <td>วิศวกรรมและอุตสาหกรรมเกษตร</td>
+                <td>ปริญญาตรี</td>
+              </tr>
+              <tr>
+                <td class="code">40201203</td>
+                <td>กลศาสตร์ของไหลเบื้องต้น</td>
+                <td>3(3-0-6)</td>
+                <td>วิศวกรรมและอุตสาหกรรมเกษตร</td>
+                <td>ปริญญาตรี</td>
+              </tr>
+              <tr>
+                <td class="code">40302310</td>
+                <td>การแปรรูปผลผลิตเกษตร</td>
+                <td>3(2-3-4)</td>
+                <td>วิศวกรรมและอุตสาหกรรมเกษตร</td>
+                <td>ปริญญาตรี</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

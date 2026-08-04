@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ระบบบริการการศึกษา - มหาวิทยาลัยแม่โจ้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./maejo.css">
+<style>
+  :root{
+    --hero-bg:linear-gradient(120deg, var(--accent-darker), var(--accent) 60%, var(--accent-dark));
+    --hero-shadow:0 8px 28px color-mix(in oklch, var(--accent) 22%, transparent);
+  }
+
+  /* ---------- hero / sso card ---------- */
+  .hero-card{
+    background:var(--hero-bg);border-radius:var(--radius-lg);padding:28px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;color:#fff;
+    box-shadow:var(--hero-shadow);
+  }
+  .hero-text{display:flex;flex-direction:column;gap:6px;}
+  .hero-eyebrow{font-size:12px;letter-spacing:1.5px;color:#c9a24b;font-weight:700;font-family:Inter,sans-serif;}
+  .hero-title{font-size:25px;font-weight:var(--font-bold);line-height:1.35;letter-spacing:-0.005em;}
+  .hero-desc{font-size:13px;color:#d8e2d6;max-width:520px;line-height:1.5;}
+  .sso-button{
+    flex:0 0 auto;background:#c9a24b;color:var(--accent-darker);font-weight:var(--font-bold);
+    font-size:15px;padding:14px 30px;border-radius:var(--radius-md);white-space:nowrap;
+    box-shadow:0 4px 14px rgba(201,162,75,0.4);text-align:center;
+  }
+
+  /* ---------- announcements ---------- */
+  .announce-card{background:#fff;border-radius:var(--radius-lg);border:var(--card-border);box-shadow:var(--card-shadow);overflow:hidden;}
+  .announce-header{
+    display:flex;align-items:center;justify-content:space-between;padding:18px 26px;border-bottom:1px solid #edf0ea;
+  }
+  .announce-title{font-size:16px;font-weight:var(--font-bold);letter-spacing:0.2px;color:var(--accent-darker);}
+  .announce-title-en{font-size:12px;color:#8a948a;font-family:Inter,sans-serif;}
+
+  .announce-item{display:flex;gap:20px;padding:24px 26px;border-bottom:1px solid #f1f3ee;}
+  .announce-index{
+    flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:var(--accent-tint);
+    color:var(--accent-dark);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;
+  }
+  .announce-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;}
+  .announce-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+  .announce-link{font-size:19px;font-weight:700;line-height:1.5;color:var(--accent-darker);}
+  .urgent-badge{
+    background:#fbeee0;color:#b0631f;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;
+  }
+  .share{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:#7a8577;}
+  .share-fb{
+    width:22px;height:22px;border-radius:6px;background:#eef2ea;display:inline-flex;align-items:center;justify-content:center;
+    color:#3b5998;font-size:12px;font-weight:800;font-family:Inter,sans-serif;
+  }
+  .announce-image{
+    width:100%;aspect-ratio:16/10;border-radius:12px;background:repeating-linear-gradient(45deg,#eef2ea,#eef2ea 10px,#e6ebe2 10px,#e6ebe2 20px);
+    display:flex;align-items:center;justify-content:center;color:#8a948a;font-size:13px;text-align:center;padding:12px;
+  }
+  .announce-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:#7a8577;padding-top:2px;}
+  .announce-meta strong{color:#4c564b;}
+
+  @media (max-width:880px){
+    .hero-card{flex-direction:column;align-items:flex-start;padding:22px 20px;gap:18px;}
+    .sso-button{width:100%;}
+    .announce-header{padding:14px 18px;}
+    .announce-item{padding:18px;gap:14px;}
+  }
+
+  @media (max-width:460px){
+    .hero-title{font-size:20px;}
+    .announce-item{flex-direction:column;}
+    .announce-link{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle">
+<input type="checkbox" id="lang-toggle">
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <label for="menu-toggle" class="hamburger" aria-label="เปิดเมนู">
+        <span></span><span></span><span></span>
+      </label>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1280px-MJU_LOGO.svg.png" alt="Maejo University logo">
+      <div class="brand">
+        <span class="brand-name">มหาวิทยาลัยแม่โจ้</span>
+        <span class="brand-sub">MAEJO UNIVERSITY</span>
+      </div>
+      <div class="topbar-divider"></div>
+      <span class="topbar-service">ระบบบริการการศึกษา</span>
+    </div>
+
+    <div class="topbar-right">
+      <span class="welcome">ยินดีต้อนรับ</span>
+      <label for="lang-toggle" class="lang-toggle">
+        <span class="lang-knob"></span>
+        <span class="lang-th">TH</span>
+        <span class="lang-en">EN</span>
+      </label>
+    </div>
+  </header>
+
+  <label for="menu-toggle" class="backdrop"></label>
+
+  <div class="main-row">
+
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-header">
+          <span>เมนูหลัก</span>
+          <label for="menu-toggle" class="close-menu">✕</label>
+        </div>
+        <nav class="menu">
+          <a href="./index.html" class="menu-item active">หน้าหลัก</a>
+          <a href="./courses.html" class="menu-item">วิชาที่เปิดสอน</a>
+          <a href="./class-schedule.html" class="menu-item">ตารางเรียนนักศึกษา</a>
+          <a href="#" class="menu-item">ตารางสอนอาจารย์</a>
+          <a href="#" class="menu-item">ตารางการใช้ห้อง</a>
+          <a href="#" class="menu-item">ปฏิทินการศึกษา</a>
+          <a href="#" class="menu-item">หลักสูตรที่เปิดสอน</a>
+          <a href="#" class="menu-item">ตอบคำถาม</a>
+          <a href="#" class="menu-item">แนะนำการลงทะเบียน</a>
+          <a href="#" class="menu-item">วิธีการพิมพ์ใบเสร็จรับเงินค่าเทอม (กองคลัง)</a>
+          <a href="#" class="menu-item">เว็บไซต์สำนักบริหารฯ</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <div class="hero-card">
+        <div class="hero-text">
+          <span class="hero-eyebrow">SINGLE SIGN-ON</span>
+          <span class="hero-title">เข้าสู่ระบบบริการการศึกษา</span>
+          <span class="hero-desc">ลงชื่อเข้าใช้ด้วยบัญชี SSO ของมหาวิทยาลัยเพื่อดูตารางเรียน ตารางสอบ และข้อมูลการลงทะเบียนของคุณ</span>
+        </div>
+        <a href="#" class="sso-button">เข้าสู่ระบบ (SSO)</a>
+      </div>
+
+      <div class="announce-card">
+        <div class="announce-header">
+          <span class="announce-title">ประกาศ</span>
+          <span class="announce-title-en">Announcements</span>
+        </div>
+
+        <div class="announce-item">
+          <div class="announce-index">1</div>
+          <div class="announce-body">
+            <div class="announce-row">
+              <a href="#" class="announce-link">กำหนดการสอบกลางภาค ภาคเรียนที่ 1 ปีการศึกษา 2569</a>
+              <span class="urgent-badge">ด่วนที่สุด</span>
+              <span class="share">
+                แชร์ไปยัง
+                <span class="share-fb">f</span>
+              </span>
+            </div>
+
+            <div class="announce-image">วางภาพประกาศกำหนดการสอบกลางภาคที่นี่</div>
+
+            <div class="announce-meta">
+              <span>ประกาศโดย <strong>John Doe</strong></span>
+              <span>วันที่ประกาศ 24 กรกฎาคม 2569</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
