@@ -281,7 +281,7 @@
       <aside class="sidebar">
         <div class="sidebar-card">
           <div class="sidebar-header">
-            <span>เมนูหลัก</span>
+            <h2>เมนูหลัก</h2>
             <label for="menu-toggle" class="close-menu">✕</label>
           </div>
           <nav class="menu">
@@ -302,27 +302,27 @@
 
       <main class="main">
 
-        <div class="hero-card">
+        <section class="hero-card" aria-label="เข้าสู่ระบบด้วย Single Sign-On">
           <div class="hero-text">
             <span class="hero-eyebrow">SINGLE SIGN-ON</span>
-            <span class="hero-title">เข้าสู่ระบบบริการการศึกษา</span>
-            <span class="hero-desc">ลงชื่อเข้าใช้ด้วยบัญชี SSO ของมหาวิทยาลัยเพื่อดูตารางเรียน ตารางสอบ
-              และข้อมูลการลงทะเบียนของคุณ</span>
+            <h1 class="hero-title">เข้าสู่ระบบบริการการศึกษา</h1>
+            <p class="hero-desc">ลงชื่อเข้าใช้ด้วยบัญชี SSO ของมหาวิทยาลัยเพื่อดูตารางเรียน ตารางสอบ
+              และข้อมูลการลงทะเบียนของคุณ</p>
           </div>
           <a href="#" class="sso-button">เข้าสู่ระบบ (SSO)</a>
-        </div>
+        </section>
 
-        <div class="announce-card">
-          <div class="announce-header">
-            <span class="announce-title">ประกาศ</span>
+        <section class="announce-card" aria-labelledby="announce-heading">
+          <header class="announce-header">
+            <h2 class="announce-title" id="announce-heading">ประกาศ</h2>
             <span class="announce-title-en">Announcements</span>
-          </div>
+          </header>
 
-          <div class="announce-item">
+          <article class="announce-item">
             <div class="announce-index">1</div>
             <div class="announce-body">
               <div class="announce-row">
-                <a href="#" class="announce-link">กำหนดการสอบกลางภาค ภาคเรียนที่ 1 ปีการศึกษา 2569</a>
+                <h3 class="announce-link"><a href="#">กำหนดการสอบกลางภาค ภาคเรียนที่ 1 ปีการศึกษา 2569</a></h3>
                 <span class="urgent-badge">ด่วนที่สุด</span>
                 <span class="share">
                   แชร์ไปยัง
@@ -330,16 +330,16 @@
                 </span>
               </div>
 
-              <div class="announce-image">Mockup</div>
+              <figure class="announce-image">Mockup</figure>
 
-              <div class="announce-meta">
+              <footer class="announce-meta">
                 <span>ประกาศโดย <strong>John Doe</strong></span>
-                <span>วันที่ประกาศ 24 กรกฎาคม 2569</span>
-              </div>
+                <span>วันที่ประกาศ <time datetime="2026-07-24">24 กรกฎาคม 2569</time></span>
+              </footer>
             </div>
-          </div>
+          </article>
 
-        </div>
+        </section>
 
       </main>
     </div>
